@@ -9,14 +9,14 @@
 </head>
 <body>
     <div class="wrapper">
-        <form action="">
+        <form action="login_authenticate.php" method="post">
             <h1>LOGIN</h1>
             <div class="input-box">
-                <input type="text" placeholder="Username" required>
+                <input type="text" name="usname" id="usname" placeholder="Username" required>
                 <i class='bx bxs-user'></i>
             </div>
             <div class="input-box">
-                <input type="password" placeholder="Password">
+                <input type="password" name="cred" id="cred" placeholder="Password">
                 <i class='bx bxs-lock'></i>
             </div>
             <div class="remember-me">
