@@ -1,5 +1,4 @@
-<?php
-// Database connection
+<?php    
 $host = 'localhost';
 $username = 'root';
 $password = '';
@@ -14,21 +13,20 @@ if (!$conn) {
 // Form submission
 if ($_SERVER["REQUEST_METHOD"] == "POST") 
 {
-    $usname = $_POST['usname'];
-    $cred = $_POST['cred'];
+    $usname = $_POST['UserName'];   //must be equivalent to Database names also mention the name="" in HTML
+    $cred = $_POST['Credentials'];
 
-    $sql = "INSERT INTO submissions (usname, cred) VALUES ('$usname', '$cred')";
-
-    if (mysqli_query($conn, $sql)) 
+    $sql = "SELECT * FROM userdetails WHERE UserName='$usname' AND Credentials='$cred'";
+    $result=mysqli_query($conn, $sql);
+    
+    if (mysqli_num_rows($result)==1) 
     {
-        
-        echo "Message sent successfully!";
+        echo "Logged In Successfully! ";
     } 
     else 
     {
-        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+        echo "User Not Found!!";
     }
 }
-
 mysqli_close($conn);
 ?>
