@@ -21,5 +21,5 @@ Requirements:
    --> MySQL
    --> Web server(Apache Xampp)
 
-Contributors
+Contributors:
 Deepak A
