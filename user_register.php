@@ -23,7 +23,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     if (mysqli_query($conn, $sql)) 
     {
         
-        echo "Registered Successfully!";
+        echo "<center><h1>Registered Successfully!!</h1></center>";
     } 
     else 
     {
