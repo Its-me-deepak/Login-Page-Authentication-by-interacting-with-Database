@@ -18,16 +18,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST")
     $emailid =  $_POST['EmailId'];
     $cred = $_POST['Credentials'];
 
-    $sql = "INSERT INTO userdetails (UserName,EmailId, Credentials) VALUES ('$usname','$emailid','$cred')";
+    $check = "SELECT * FROM userdetails WHERE UserName='$usname' AND EmailId='$emailid' AND Credentials='$cred'";
+    $result=mysqli_query($conn,$check);
 
-    if (mysqli_query($conn, $sql)) 
+    if(mysqli_num_rows($result)==1)
     {
-        
-        echo "<center><h1>Registered Successfully!!</h1></center>";
-    } 
-    else 
+        echo "<center><h1>User Already Exists!!</h1></center>";
+    }
+    else
     {
-        echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+        $sql = "INSERT INTO userdetails (UserName,EmailId, Credentials) VALUES ('$usname','$emailid','$cred')";
+
+        if (mysqli_query($conn, $sql)) 
+        {
+            
+            echo "<center><h1>Registered Successfully!!</h1></center>";
+        } 
+        else 
+        {
+            echo "Error: " . $sql . "<br>" . mysqli_error($conn);
+        }
     }
 }
 
